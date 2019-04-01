@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EspressoTest</string>
+    <string name="home_page_text">Check if the text fits the specified number of lines. It should fit 3 lines on all locals.</string>
+    <string name="fill_all_fields">Please fill all the fields.</string>
+    <string name="invalid_email">Please give a valid Email address.</string>
+    <string name="password_mismatch">Passwords do not match.</string>
+</resources>
