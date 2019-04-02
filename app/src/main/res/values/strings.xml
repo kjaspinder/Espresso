@@ -4,4 +4,9 @@
     <string name="fill_all_fields">Please fill all the fields.</string>
     <string name="invalid_email">Please give a valid Email address.</string>
     <string name="password_mismatch">Passwords do not match.</string>
+    <string name="alarm_config_instruction_unavailable">Alarms are only available when you start a FreeStyle Libre 2 Sensor with this device.</string>
+    <string name="learn_more">LEARN MORE</string>
+    <string name="alarm_high_glucose">High Glucose Alarm</string>
+    <string name="alarm_low_glucose">Low Glucose Alarm</string>
+    <string name="alarm_signal_loss">Signal Loss Alarm</string>
 </resources>
