@@ -21,6 +21,8 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".AlarmSettingActivity" />
         <activity android:name=".AlarmDetailActivity" />
+        <activity android:name=".CalculatorModule.CalculatorViewOperations" />
+
     </application>
 
 </manifest>

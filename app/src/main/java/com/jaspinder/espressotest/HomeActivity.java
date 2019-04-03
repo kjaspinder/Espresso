@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.jaspinder.espressotest.CalculatorModule.CalculatorViewOperations;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -18,7 +20,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 	@BindView(R.id.alarms_screen)
 	Button alarms_screen;
 
-	@BindView(R.id.graph_screen)
+	@BindView(R.id.calculator)
 	Button graph_screen;
 
 	@BindView(R.id.notes_screen)
@@ -48,8 +50,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 				Intent i = new Intent(HomeActivity.this, AlarmSettingActivity.class);
 				startActivity(i);
 				break;
-			case R.id.graph_screen:
-
+			case R.id.calculator:
+				Intent i1 = new Intent(HomeActivity.this, CalculatorViewOperations.class);
+				startActivity(i1);
 				break;
 			case R.id.notes_screen:
 
