@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toStartOf="@id/textState"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textGlucoseAlarm"/>
+        />
 
     <TextView
         android:id="@+id/textGlucoseAlarm"
@@ -36,7 +36,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/textState"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMenuName" />
+
+         />
 
     <TextView
         android:id="@+id/textState"
@@ -46,6 +47,7 @@
         android:padding="8dp"
         android:textAlignment="viewEnd"
         android:textSize="@dimen/text_size_L4"
+        app:layout_constraintTop_toBottomOf="@+id/textMenuName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/imageNext"
         app:layout_constraintTop_toTopOf="parent" />

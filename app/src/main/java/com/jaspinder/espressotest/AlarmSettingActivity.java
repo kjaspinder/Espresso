@@ -1,11 +1,16 @@
 package com.jaspinder.espressotest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+
+import com.jaspinder.espressotest.Interfaces.OnClickListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,11 +18,15 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-public class AlarmSettingActivity extends AppCompatActivity
+import butterknife.OnClick;
+public class AlarmSettingActivity extends AppCompatActivity implements OnClickListener, View.OnClickListener
 {
 
 	@BindView(R.id.alarmMenuList)
 	RecyclerView alarmMenuList;
+
+	@BindView(R.id.learnMore)
+	Button learnMore;
 
 	private AlarmsMenuAdapter mAlarmMenuAdapter;
 
@@ -34,7 +43,7 @@ public class AlarmSettingActivity extends AppCompatActivity
 
 		setUpAlarmList();
 
-
+		learnMore.setOnClickListener(this);
 	}
 
 	@Override
@@ -50,8 +59,9 @@ public class AlarmSettingActivity extends AppCompatActivity
 		List<String> menuItems = Arrays.asList(getResources().getStringArray(R.array.alarmMenu));
 		mMenuList.clear();
 
-		for(String item: menuItems){
-			mMenuList.add(new AlarmMenuItemViewModel(item,"ON","Below 3.9 mmol/L"));
+		for (String item : menuItems)
+		{
+			mMenuList.add(new AlarmMenuItemViewModel(item, "ON", "Below 3.9 mmol/L"));
 		}
 
 		mAlarmMenuAdapter.notifyDataSetChanged();
@@ -62,7 +72,25 @@ public class AlarmSettingActivity extends AppCompatActivity
 		alarmMenuList.setLayoutManager(mLayoutManager);
 		alarmMenuList.addItemDecoration(new DividerItemDecoration(this,
 				DividerItemDecoration.VERTICAL));
-		mAlarmMenuAdapter = new AlarmsMenuAdapter(mMenuList);
+		mAlarmMenuAdapter = new AlarmsMenuAdapter(mMenuList, this);
 		alarmMenuList.setAdapter(mAlarmMenuAdapter);
+	}
+	@Override
+	public void onClick(int position)
+	{
+		Intent i = new Intent(AlarmSettingActivity.this, AlarmDetailActivity.class);
+		i.putExtra("alarm_details", mMenuList.get(position));
+		startActivity(i);
+	}
+	@Override
+	public void onClick(View v)
+	{
+		if (v.getId() == R.id.learnMore)
+		{
+			AlarmMenuItemViewModel model = new AlarmMenuItemViewModel("Learn More","On","x");
+			Intent i = new Intent(AlarmSettingActivity.this, AlarmDetailActivity.class);
+			i.putExtra("alarm_details", model);
+			startActivity(i);
+		}
 	}
 }

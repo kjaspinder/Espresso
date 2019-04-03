@@ -7,16 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jaspinder.espressotest.Interfaces.OnClickListener;
+
 import java.util.List;
 public class AlarmsMenuAdapter extends RecyclerView.Adapter<AlarmsMenuAdapter.ViewHolder>
 {
 
 	private List<AlarmMenuItemViewModel> mMenuList;
+	private OnClickListener mOnClickListener;
 
 
-	AlarmsMenuAdapter(List<AlarmMenuItemViewModel> menuList)
+	AlarmsMenuAdapter(List<AlarmMenuItemViewModel> menuList, OnClickListener listener)
 	{
 		this.mMenuList = menuList;
+		this.mOnClickListener = listener;
 	}
 
 	@NonNull
@@ -46,7 +50,7 @@ public class AlarmsMenuAdapter extends RecyclerView.Adapter<AlarmsMenuAdapter.Vi
 		return mMenuList.size();
 	}
 
-	class ViewHolder extends RecyclerView.ViewHolder
+	class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 	{
 		TextView textMenuName;
 		TextView textGlucoseAlarm;
@@ -58,9 +62,16 @@ public class AlarmsMenuAdapter extends RecyclerView.Adapter<AlarmsMenuAdapter.Vi
 			textMenuName = v.findViewById(R.id.textMenuName);
 			textGlucoseAlarm = v.findViewById(R.id.textGlucoseAlarm);
 			textState = v.findViewById(R.id.textState);
+			v.setOnClickListener(this);
 
 		}
 
+
+		@Override
+		public void onClick(View v)
+		{
+			mOnClickListener.onClick(getAdapterPosition());
+		}
 	}
 
 
